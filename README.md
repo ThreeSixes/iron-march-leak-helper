@@ -22,7 +22,7 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 
 ## Using the project
 - The MySQL container will open up TCP 33060 for connections. It shouldn't interfere with any default MySQL installations on your system.
-- Connection information is as follows:
+- Database connection information is as follows:
     - Host: `0.0.0.0`
     - Port: `33060`
     - User: `user`
@@ -37,5 +37,5 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 - Even after the database has been ingested Docker will still expect the SQL file to exist in the project.
 - On Linux and potentially OSX systems you might need root permissions to delete the `mysql-data` folder. The Docker container will set the UID of the files and directories to 0 since the container runs MySQL as root. Just use `sudo` to delete the folder.
 
-## Licens
+## License
 This project is licensed using the MIT license. A copy has been included with the repository.
