@@ -12,13 +12,12 @@ This was written to make use of the SQL dumps easier for those who have a use fo
 This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the leaked SQL dump as a read-only file, and runs the SQL file against a newly created database called `iron_march`. The data from the ingested database is stored in the root of the project in a new folder called `mysql-data`. After the initial ingestion of the data you can start and stop the container at will and the ingestion process won't have to be run again unless the folder containing the MySQL data files is deleted or the contents modified.
 
 ## Project setup
-1. Download the Iron March leaks from the site in the `Prerequisites` section.
-2. Make sure Docker CE has been installed.
-3. Decompress the zip file and move the folder into this project.
-4. Rename the folder containing the leaked data to `iron_march_leaks`.
-5. Execute `docker-compose up` in the project's root.
-6. The container should download, start, and then you'll see some logs. The database will take some time to ingest. It's approximately 1.3 GB after being pulled into MySQL.
-7. Once you see a line that looks something like `iron-march-mysql       | Version: '5.7.23'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)` it's ready for a connection. The intial setup is complete.
+1. Make sure you have installed the prerequisitie software and have downloaded the leaked data as specified in the `Prerequisites` section.
+2. Decompress the leaked data zip file and move the folder into this project.
+3. Rename the folder containing the leaked data to `iron_march_leaks`.
+4. Execute `docker-compose up` in the project's root.
+5. The container should download, start, and then you'll see some logs. The database will take some time to ingest. It's approximately 1.3 GB after being pulled into MySQL.
+6. Once you see a line that looks something like `iron-march-mysql       | Version: '5.7.23'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)` it's ready for a connection. The intial setup is complete.
 
 ## Using the project
 - The MySQL container will open up TCP 33060 for connections. It shouldn't interfere with any default MySQL installations on your system.
@@ -32,8 +31,8 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 - When you want to use it again use `docker-compose up` to start it again.
 
 ## Extras!
-### Prerequisits
-- Python (2.7 or 3.6). Most Non-Windows operating systems have a System Python installed by default that should work.
+### Prerequisites
+- Python (2.7 or 3.6). Most non-Windows operating systems have a System Python installed by default that should work.
 
 ### Tool list
 - `tools/unix2date.py` - This is a simple utility that converts unix time stamps in the dump to a human-readable UTC date. For example run `./tools/unix2date.py 1458552669` where the number is a timestamp from the database. The output will yield something like this: `2016-03-21 09:31:09 UTC`
@@ -43,6 +42,7 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 - This has only been tested on Linux systems, but should work on OS X. Windows users might need to fix paths in the docker-compose.yml file.
 - Even after the database has been ingested Docker will still expect the SQL file to exist in the project.
 - On Linux and potentially OSX systems you might need root permissions to delete the `mysql-data` folder. The Docker container will set the UID of the files and directories to 0 since the container runs MySQL as root. Just use `sudo` to delete the folder.
+- For some reason MySQL will reject your database connection unless you use the `0.0.0.0` hostname. I have only tested it on Ubuntu 18.04 LTS. If someone knows why that is I'd love to hear from you.
 
 ## License
 This project is licensed using the MIT license. A copy has been included with the repository.
