@@ -1,4 +1,4 @@
-# Iron March SQL dump helper
+# Iron March leak helper
 ## Prerequisites:
  - [Docker](https://docs.docker.com/install/) must be installed
  - [Iron March leaked data](https://www.bellingcat.com/resources/how-tos/2019/11/06/massive-white-supremacist-message-board-leak-how-to-access-and-interpret-the-data/) should be downloaded to your computer.
