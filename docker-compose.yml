@@ -1,0 +1,19 @@
+version: "3"
+services:
+  iron_march_mysql_db:
+    image: "mysql:5.7"
+    container_name: "iron-march-mysql"
+    restart: "always"
+    environment:
+      - "MYSQL_DATABASE=iron_march"
+      - "MYSQL_USER=user"
+      - "MYSQL_PASSWORD=user"
+      - "MYSQL_ROOT_PASSWORD=blah"
+    expose:
+      - "3306"
+    ports:
+      - "33060:3306"
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
+      - "./iron_march_leaks/database.sql:/media/sql/database.sql:ro"
+      - "./mysql-automation:/docker-entrypoint-initdb.d:ro"
