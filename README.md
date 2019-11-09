@@ -31,6 +31,13 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 - When you're done using the database you can run `docker-compose down` and the database engine will shut down.
 - When you want to use it again use `docker-compose up` to start it again.
 
+## Extras!
+### Prerequisits
+- Python (2.7 or 3.6). Most Non-Windows operating systems have a System Python installed by default that should work.
+
+### Tool list
+- `tools/unix2date.py` - This is a simple utility that converts unix time stamps in the dump to a human-readable UTC date. For example run `./tools/unix2date.py 1458552669` where the number is a timestamp from the database. The output will yield something like this: `2016-03-21 09:31:09 UTC`
+
 ## Limitations and known issues
 - **This is not supposed to be a production-quality configuration. Use it at your own risk.**
 - This has only been tested on Linux systems, but should work on OS X. Windows users might need to fix paths in the docker-compose.yml file.
