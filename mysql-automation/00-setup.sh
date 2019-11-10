@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CANARY=/var/lib/mysql
+CANARY=/var/lib/mysql/iml-setup-complete
 
 # Since SQL is dumb I'm doing this.
 if [[ -f "$CANARY" ]]; then
