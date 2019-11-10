@@ -31,8 +31,8 @@ This project leverages docker-compose to pull down a MySQL 5.7 image, mounts the
 - When you want to use it again use `docker-compose up` to start it again.
 
 ## Resolving issues
-### I broke the MySQL database or deleted something!
-- This is easy to fix. Run `docker-compose down`, delete the `mysql-data` folder in the project (you might need root or admin permissions so use `sudo`), and then run `docker-compose up`. The database will be rebuilt automatically from the data provided in th e leaks!
+### I broke the MySQL database or deleted something in it!
+- This is easy to fix. Run `docker-compose down`, delete the `mysql-data` folder in the project (you might need root or admin permissions so use `sudo`), and then run `docker-compose up`. The database will be rebuilt automatically from the data provided in the leaks!
 
 ## Extras!
 ### Prerequisites
